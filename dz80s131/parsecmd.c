@@ -5,6 +5,8 @@
 #include <stdio.h>
 #ifdef NEW_BUILD
 #include <string.h>
+#include <ctype.h>	/* for tolower */
+#include <stdlib.h>	/* for strtol */
 #endif
 
 #include "types.h"

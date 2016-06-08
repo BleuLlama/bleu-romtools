@@ -17,6 +17,7 @@
 #ifdef NEW_BUILD
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #endif
 
 #include "types.h"
@@ -1631,7 +1632,7 @@ DISREF	*P;
             	continue;
             }
 
-		sprintf(MsgBuf, TypeMsg);
+		sprintf(MsgBuf, "%s", TypeMsg);
         strcat(MsgBuf, " Reference:\n\n");
 	    fwrite(MsgBuf, 1, strlen(MsgBuf), RefStream);
 
@@ -1757,16 +1758,22 @@ void Add16BitAddress(WORD Addr)
 
 void StringToLower(char *s)
 {
-	while (*s)
-    	*s++ = tolower(*s);
+    while (*s)
+    {
+    	*s = tolower(*s);
+	s++;
+    }
 
     return;
 }
 
 void StringToUpper(char *s)
 {
-	while (*s)
-    	*s++ = toupper(*s);
+    while (*s)
+    {
+    	*s = toupper(*s);
+	s++;
+    }
 
     return;
 }

@@ -16,8 +16,7 @@ EXE_dependencies =  \
   dissz80.o \
   dz80.o
 
-CFLAGS := -g\
-	-DNEW_BUILD
+CFLAGS := -DNEW_BUILD -Wall -pedantic
 	 
 
 %.o: %.c
