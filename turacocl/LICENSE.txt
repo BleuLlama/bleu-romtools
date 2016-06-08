@@ -1,0 +1,37 @@
+The License.  Whee.
+
+    Turaco CL is freeware.  Do what you'd like with it.  I make no
+    warranties that this software performs as advertised.  (Or at all.)
+
+    Please do not redistribute this software.  Always reference the
+    base site of:
+
+		http://code.google.com/p/bleu-romtools
+
+    or the freshmeat.net page:
+
+		http://www.freshmeat.net/turacoCL
+
+
+    If you want to distribute this on a paid medium like CD-ROM, please
+    contact me at:
+
+	    	yorgle@gmail.com
+
+
+    There is one source module in this distribution which uses external
+    code.  The file "ini/fronthlp.c" is based on the xMAME 0.65.1
+    source code.  This modified xMAME source code is available upon
+    request, although the only difference is the above source module.
+
+    From the MAME License:
+
+	   This chapter might not apply to specific portions of
+	   MAME (e.g. CPU emulators) which bear different copyright
+	   notices.  The source code cannot be used in a commercial
+	   product without the written authorization of the
+	   authors. Use in non-commercial products is allowed, and
+	   indeed encouraged.  If you use portions of the MAME
+	   source code in your program, however, you must make the
+	   full source code freely available as well.
+

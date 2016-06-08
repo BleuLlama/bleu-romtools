@@ -1,0 +1,231 @@
+#
+#  This is a very well commented driver file
+#
+#   commented by Scott Lawrence
+#                1 Jan 99
+#
+# This started it's life as a pacman driver.
+
+# the filename is the short name of the driver.  for example, "BUNNY.INI"
+# will have its rom files in ROMDIR\BUNNY\ROM.BIN
+
+# General: This contains general information about the driver
+[General]
+# Description: This is the "long" or "full" name of the driver.
+#              This will be displayed in the -listfull list, or file selector
+Description = Pac-Man (Midway)
+
+# Layout:  General information about the graphics layouts 
+[Layout]
+# GfxDecodes: number of "Decode"'s below in the file
+GfxDecodes = 4
+# Orientation: orientation of the decodes.  This is to simplify writing 
+#              drivers.  Instead of making the driver rotate the info as it
+#              loads it, this will rotate or flip the images after it's loaded
+#
+#  0   - no effect
+#  1   - Flip X - mirror everything in the X direction
+#  2   - Flip Y - mirror everything in the Y direction
+#  4   - Swap X & Y - mirror along the top-left and bottom-right diagonal
+#  5   - Rotate 90 degtees clockwise
+#  3   - Rotate 180 degrees (clockwise)  
+#  6   - Rotate 270 degrees clockwise (90 degrees counter-clockwise)
+Orientation = 0
+
+# GraphicsRoms: stores the names and sizes of the files that contain 
+#               the graphics data
+[GraphicsRoms]
+# these are numbered, starting with 1, through the number of required roms.
+# order in this file of the numbers does not matter.  If there are 1, 2, 3,
+# and 5 (no 4), then it will stop at 3.
+# 
+# The fields are seperated by spaces, and are as follows:
+#     (offset) (size) (filename)
+Rom1 =      0    4096  pacman.5e
+Rom2 =   4096    4096  pacman.5f
+# Offset:   Location or order of the rom file in memory (in bytes)
+# Size:     File size of the rom file (in bytes)
+# Filename: The name of the rom file. (case insensitive)
+#
+# Above: pacman.5e starts at memory location 0 and is 4096 bytes large
+#        pacman.5f starts at memory location 4096 and is 4096 bytes large
+
+# Decode1: As above, the graphics decode banks start at 1, and there are
+#          as many of them as in "GfxDecodes" above.
+[Decode1]
+# start: location in the memory space where this, the first bank begins
+start = 0
+# width: number of bits wide each sprite is.
+width = 8
+# height: number of bits tall each sprite is.
+height = 8
+# total: number of sprites in this bank 
+total = 256
+#planes: number of bitplanes in this bank:
+#        1 plane  = 2^1 or 2 colors
+#        2 planes = 2^2 or 4 colors
+#        3 planes = 2^3 or 8 colors
+#        4 planes = 2^4 or 16 colors
+#        5 planes = 2^5 or 32 colors
+#        8 planes = 2^8 or 256 colors
+planes = 2
+# planeoffsets: there should be as many of these as there are planes.  They
+#               are seperated by spaces.  In this example, on plane 0, the 
+#               first plane, each sprite starts at 0.  Plane 1 starts 
+#               at 4 *BITS* off from the beginning of the sprite.
+planeoffsets = 0 4 
+# xoffsets: the offsets from each sprite start point for each bit for the 
+#           beginnings of each row of pixels
+xoffsets = 56 48 40 32 24 16 8 0 
+# yoffsets: the offsets from each sprite start point for each bit for the 
+#           beginnings of each column of pixels
+yoffsets = 64 65 66 67 0 1 2 3 
+# charincrement: the number of bits to add to the start point to go to 
+#                the next sprite.
+charincrement = 128
+
+# here's an example using the above:
+# sprite 0:  starts at (start) or (0), and is (2) planes deep.
+#  plane 1 starts at (start+planeoffset1) or (0 + 0)
+#  The first row (8 pixels wide) of bits can be found at:
+#  0+yoffset1+xoffset1, 0+yoffset1+xoffset2, 0+yoffset1+xoffset3, etc.
+#  0+64+56, 0+64+48, 0+64+40, etc...
+#
+# the next plane starts at (4) and, using the example as above is:
+#  4+yoffset1+xoffset1, 4+yoffset1+xoffset2, 4+yoffset1+xoffset3, etc.
+#  4+64+56, 4+64+48, 4+64+40, etc...
+#
+# the next sprite starts at (0+128) (bits, not bytes)
+#  it's first plane starts at (0+128+0)
+#  it's second plane starts at (0+128+4)
+#
+# the next sprite starts at (0+256) (bits, not bytes)
+#  it's first plane starts at (0+256+0)
+#  it's second plane starts at (0+256+4)
+#
+# and so on...
+#
+# ... I think ...
+
+[Decode2]
+# bank 2
+start = 4096
+width = 16
+height = 16
+total = 64
+planes = 2
+planeoffsets = 0 4 
+xoffsets = 312 304 296 288 280 272 264 256 56 48 40 32 24 16 8 0 
+yoffsets = 64 65 66 67 128 129 130 131 192 193 194 195 0 1 2 3 
+charincrement = 512
+
+[Decode3]
+# bank 3
+start = 0
+width = 16
+height = 16
+total = 64
+planes = 2
+planeoffsets = 0 4 
+xoffsets = 184 176 168 160 152 144 136 128 56 48 40 32 24 16 8 0 
+yoffsets = 64 65 66 67 0 1 2 3 320 321 322 323 256 257 258 259 
+charincrement = 512
+
+[Decode4]
+# bank 4
+start = 0
+width = 16
+height = 16
+total = 64
+planes = 2
+planeoffsets = 0 4 
+xoffsets = 56 48 40 32 24 16 8 0 184 176 168 160 152 144 136 128 
+yoffsets = 64 65 66 67 0 1 2 3 320 321 322 323 256 257 258 259 
+charincrement = 512
+
+# Palette: This is where all of the palettes are stored
+[Palette]
+# as above, these start at 1, and increment from there.
+# they are space sperated as above as well.
+Palette1 = 4    0  0  0   50 50 50    0  0 30   50  0  0
+# (number of colors) (color1 red) (color1 green) (color1 blue)
+#                    (color2 red) (color2 green) (color2 blue)
+# etc...
+#
+# in the above example, there are 4 colors, the first color being (0,0,0).
+# second color is (50, 50, 50), etc.  The values go from 0 (no color)
+# to 63 (full color).  Black is "0 0 0" and white is "63 63 63"
+Palette2 = 4    0  0  0    0 50  0    0  0 30   50 40 20
+Palette3 = 4    0  0  0    0  0 50   60  0  0   60 60  0
+Palette4 = 4    0  0  0   50  0  0   30 30  0   50 50 50
+Palette5 = 4    0  0  0   50  0  0    0 50  0   50 50 50
+Palette6 = 4    0  0  0   40 40  0    0 50  0   30 30  0
+Palette7 = 4    0  0  0   50 50  0   30 30 50   50 50 50
+Palette8 = 4    0  0  0   50  0  0   30 30  0   50 50 50
+Palette9 = 4    0  0  0    0 40 50    0 50  0   50 50 50
+Palette10 = 4    0  0  0    0  0  0   30 30 50   50 50 50
+Palette11 = 4   60  0  0   60 60 60    0 60  0    0  0 50
+Palette12 = 4    0  0  0   60 60 60    0  0  0    0  0 50
+
+# 
+# the next sections are all for the map and text editing, which is not
+# yet supported by TURACO, therefore I will not explain it yet.
+#
+[DataRoms]
+Rom1 =      0    4096  pacman.6e
+Rom2 =   4096    4096  pacman.6f
+Rom3 =   8192    4096  pacman.6h
+Rom4 =  12288    4096  pacman.6j
+
+[Map1]
+MapType = pacman
+StartAddress = 3436
+OverlayAddress = 35B5
+OverlayCount = 240
+Width = 28
+Height = 32
+Gfx_Bank = 1
+HC1 =   1   4
+HC2 =  26   4
+HC3 =   1  24
+HC4 =  26  24
+
+[Lookup1]
+LU1 = a 41  b 42  c 43  d 44  e 45  f 46  g 47  h 48  
+LU2 = i 49  j 4a  k 4b  l 4c  m 4d  n 4e  o 4f  p 50  
+LU3 = q 51  r 52  s 53  t 54  u 55  v 56  w 57  x 58  
+LU4 = y 59  z 5a  A 41  B 42  C 43  D 44  E 45  F 46  
+LU5 = G 47  H 48  I 49  J 4a  K 4b  L 4c  M 4d  N 4e  
+LU6 = O 4f  P 50  Q 51  R 52  S 53  T 54  U 55  V 56  
+LU7 = W 57  X 58  Y 59  Z 5a  0 30  1 31  2 32  3 33  
+LU8 = 4 34  5 35  6 36  7 37  8 38  9 39  . 25  / 3a  
+LU9 = ! 5b  @ 5c    40  - 3b  " 26  ' 27  [ 5d  ] 5e  
+LU10 = \ 5f  # 28  $ 29  % 2a  ^ 2b  & 2c  * 2d  ( 2e  
+LU11 =  0  40  
+
+[String_Category1]
+Name = Main Ghost Names
+Gfx_Bank = 1
+Lookup = 1
+String1 =  3d59  10  "Red Name"
+String2 =  3d69   9  "Red Nick"
+String3 =  3d78  10  "Pink Name"
+String4 =  3d88   9  "Pink Nick"
+String5 =  3d97  10  "Aqua Name"
+String6 =  3da7   9  "Aqua Nick"
+String7 =  3db6  10  "Orange Name"
+String8 =  3dc6   9  "Orange Nick"
+
+[String_Category2]
+Name = Alt. Ghost Names
+Gfx_Bank = 1
+Lookup = 1
+String1 =  3dd5  10  "Red Name"
+String2 =  3de5   9  "Red Nick"
+String3 =  3df4  10  "Pink Name"
+String4 =  3e04   9  "Pink Nick"
+String5 =  3e13  10  "Aqua Name"
+String6 =  3e23   9  "Aqua Nick"
+String7 =  3e32  10  "Orange Name"
+String8 =  3e42   9  "Orange Nick"
+

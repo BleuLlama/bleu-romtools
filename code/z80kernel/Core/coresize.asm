@@ -1,0 +1,1 @@
+	CORE_LIBRARY_SZ = .

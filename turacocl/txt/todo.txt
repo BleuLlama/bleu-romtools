@@ -1,0 +1,15 @@
+----------------------------------------
+                    Turaco CL to-do list
+
+
+Future work:
+
+    _ merge the old drivers with the new
+
+    _ Make a version that is a GIMP file importer and exporter
+	NOTE: deferred to ImageMagick instead. 
+		refer to pngio.c for details.
+
+    _ palette rom tools
+	- palette rom to PPM
+	- PPM to palette ROM

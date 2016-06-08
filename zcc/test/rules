@@ -1,0 +1,89 @@
+	ld	a,#0
+=
+	xor	a,a
+
+	ld	hl,#%0	;%1(ix)
+	add	hl,sp
+	call	.gint
+=
+;	hl = int %1(ix)
+	ld	l,%1(ix)
+	ld	h,%1+1(ix)
+
+	ld	hl,#%0	;%1(ix)
+	add	hl,sp
+	call	.gchar
+=
+;	hl = char %1(ix)
+	ld	h,#0
+	ld	l,%1(ix)
+	jp	p,.+5
+	ld	h,#0xff
+
+	ld	hl,#%0	;%1(ix)
+	add	hl,sp
+	push	hl
+	ld	hl,#%2
+	pop	de
+	call	.pint
+=
+;	int %1(ix) = #%2
+	ld	%1(ix),#<%2
+	ld	%1+1(ix),#>%2
+
+	ld	hl,#%0	;%1(ix)
+	add	hl,sp
+	push	hl
+	ld	hl,#%2
+	pop	de
+	call	.pchar
+=
+;	char %1(ix) = #%2
+	ld	%1(ix),#%2
+
+	ld	hl,#%0	;%1(ix)
+	add	hl,sp
+	push	hl
+	call	.gint
+	inc	hl
+	pop	de
+	call	.pint
+=
+;	int %1(ix)++
+	inc	%1(ix)
+	jr	nz,.+5
+	inc	%1+1(ix)
+
+	ld	hl,#%0	;%1(ix)
+	add	hl,sp
+	push	hl
+	call	.gchar
+	%2	hl
+	pop	de
+	call	.pchar
+=
+;	char %1(ix)++/--
+	%2	%1(ix)
+
+	ld	hl,#%0	;%1(ix)
+	add	hl,sp
+	push	hl
+	call	.gint
+	dec	hl
+	pop	de
+	call	.pint
+=
+;	%1(ix)--
+	ld	l,%1(ix)
+	ld	h,%1+1(ix)
+	dec	hl
+	ld	%1(ix),l
+	ld	%1+1(ix),h
+
+	ld	hl,#%0
+	ld	a,l
+	ld	(%1),a
+=
+;	%1 = char %0
+	ld	a,#%0
+	ld	(%1),a

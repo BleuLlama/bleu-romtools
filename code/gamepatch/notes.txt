@@ -1,0 +1,6 @@
+--------------------------------------------------------------------------------
+Sun Aug 15 22:41:58 EDT 2004
+
+Hanglymap in yorglemaps is missing balls at the bottom
+
+move the midway map into yorglemaps

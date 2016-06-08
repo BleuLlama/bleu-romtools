@@ -1,0 +1,34 @@
+New for 0.12 
+    Features:
+	PNG support (basic) (via ImageMagick)
+
+New for 0.8
+
+    Features:
+	Filenames only use first 3 letters of driver (DOS safe)
+	Old driver/palettes are auto-brightened 
+	PCX Image file load and save
+	Capable of multiple image formats supported for the future
+	Tilemap import and export
+	-dmp command line option
+	Improved general runtime output
+	
+    Bugfixes:
+	15 5 color photoshop files load properly now.
+	05 arbitrary character widths are valid now
+	06 If only -ini selected, driver name is not "unknown" anymore
+	10 loads in ROMs properly for decoding now under MS-DOS
+	-- isNeeded was flawed, so all roms are now "needed" for decoding
+
+
+New for 0.6
+
+    Features:
+	Checkerboard file contains some indexing
+
+    Bugfixes:
+	02 ROM file size bounds check 
+
+    Build:
+	Makefile filename changed
+	Updated for building under DJGPP/MS-DOS

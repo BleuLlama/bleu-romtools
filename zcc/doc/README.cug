@@ -1,0 +1,26 @@
+
+
+                       Jan 23, 1993
+
+
+     This source listing is possibly the only good source listing
+     of ASLINK and AS6800, AS6801, AS6804, AS6805, AS6809, AS68011, AS8085,
+     ASZ80 assemblers on the internet. I searched long and hard for a 
+     good copy of the source and couldn't find a good copy.  There are bad 
+     copies all over the net with corrupted files and incomplete source 
+     listing.  It was difficult to locate the programmer (Alan Baldwin) 
+     but I called him and found a site (in his "shop") that had the 
+     source. 
+
+     I asked if it was OK for me to post a good copy to the net and 
+     Mr. Baldwin thought that was a fine idea. I also asked him if I could 
+     post his email address and he said that would be OK too.  So here
+     is the information you need to obtain a good copy of the source
+     (and DOS executables) for ASLINK and ASXXXX cross-assemblers. 
+
+     - Email address: baldwin@shop-pdp.kent.edu
+     - FTP Site: wsmr-simtel20.army.mil in pd1:<msdos.crossasm>cug292.zoo
+
+     Jeffrey Thompson
+     jeffrey@margot.mgmt.uga.edu
+  

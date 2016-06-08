@@ -1,0 +1,31 @@
+0.05	2007 July xx
+	Updated URLs to be accurate
+	Added example task, "5.1" section of readme.txt
+	Added reference "6.x" section of readme.txt
+	Wrote, and then re-wrote the MAP-RLE 1/2 screen converter
+	Added sprite xy<->memory
+	added 'sprite' function
+	Absurd:
+		map support
+		bounded cursor
+		pulled out ripples from map, added ripple function
+
+0.04	2006 August xx
+	My umlautted llama was added to the screensaver
+	Test mode implemented
+	At code rewritten to be half interrupt/half runtime
+	bugfixes:
+	    	screensaver not scheduled on boot
+
+0.03	2006 July 31
+	Quadblok is mostly done.  
+	Only one game mode for it for now.
+	Screensaver and attract modes have been polished more
+	input routine was rewritten to be half interrupt/half runtime
+	at-code is flaky - "GAME OVER" sometimes never ends - hit 'reset'
+
+0.02	-
+	unreleased
+
+0.01	2006 July 26
+	basic menu system, screensaver, attract display

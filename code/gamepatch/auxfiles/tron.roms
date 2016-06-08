@@ -1,0 +1,33 @@
+# program space
+begin program
+0x0000	0x2000	scpu_pga.bin	program_1
+0x2000	0x2000	scpu_pgb.bin	program_2
+0x4000	0x2000	scpu_pgc.bin	program_3
+0x6000	0x2000	scpu_pgd.bin	program_4
+0x8000	0x2000	scpu_pge.bin	program_5
+0xa000	0x2000	scpu_pgf.bin	program_6
+end
+
+begin cpu2
+0x0000	0x1000	ssi_0a.bin	cpu2_1
+0x1000	0x1000	ssi_0b.bin	cpu2_2
+0x2000	0x1000	ssi_0c.bin	cpu2_3
+end
+
+# graphics bank 1
+begin graphics
+0x0000	0x2000	scpu_bgg.bin	graphics_1a
+0x2000	0x2000	scpu_bgh.bin	graphics_1b
+end
+
+# graphics bank 2
+begin graphics2
+0x0000	0x2000	vg_3.bin	graphics_2a
+0x2000	0x2000	vg_2.bin	graphics_2b
+0x4000	0x2000	vg_1.bin	graphics_2c
+0x6000	0x2000	vg_0.bin	graphics_2d
+end
+
+begin proms
+0x0000  0x0020  82s123.d12	palette
+end

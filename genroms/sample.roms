@@ -1,0 +1,31 @@
+# program space
+begin program
+0x0000	0x1000	ic8		program_1
+0x1000	0x1000	ic7		program_2
+0x2000	0x1000	ic15		program_3
+0x3000	0x1000	ic14		program_4
+0x4000	0x1000	ic21		program_5
+0x5000	0x1000	ic20		program_6
+0x6000	0x1000	ic32		program_7
+0x7000	0x1000	ic31		program_8
+end
+
+# graphics bank 1
+begin graphics
+0x0000	0x2000	ic92		graphics_1
+
+# graphics bank 2
+0x0000	0x2000	ic105		graphics_2
+end
+
+# region proms
+begin region
+0x0000	0x0020	pr1633.078	palette
+0x0020	0x0400	pr1634.088	unknown
+end
+
+# sound proms
+begin sound
+0x0000	0x0100	pr1635.051	sound_a
+0x0100	0x0100	pr1636.070	sound_timing
+end

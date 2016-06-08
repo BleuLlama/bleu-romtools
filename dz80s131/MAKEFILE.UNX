@@ -1,0 +1,21 @@
+#
+# Very simple makefile for unix builds
+#
+
+#		*Translator Definitions*
+CC = cc -g
+
+#		*List Macros*
+
+EXE_dependencies =  \
+  loadfl32.o \
+  parsecmd.o \
+  dissz80.o \
+  dz80.o
+
+#		*Explicit Rules*
+dz80: $(EXE_dependencies)
+	$(CC) -o dz80 $(EXE_dependencies)
+
+clean:
+	-rm -rf dz80 $(EXE_dependencies)

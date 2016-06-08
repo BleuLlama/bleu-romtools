@@ -1,0 +1,30 @@
+# program space
+begin program
+0x0000  0x1000  boot1	program_1
+0x1000  0x1000  boot2	program_2
+0x2000  0x1000  boot3	program_3
+0x3000  0x1000  boot4	program_4
+0x8000  0x1000  boot5	program_5
+0x9000  0x1000  boot6	program_6
+end
+
+# graphics bank 1
+begin graphics
+0x0000  0x1000  5e	graphics_1
+
+# graphics bank 2
+0x0000  0x1000  5f	graphics_2
+end
+
+# color proms
+begin color
+0x0000  0x0020  82s123.7f	palette
+0x0020  0x0100  82s126.4a	colorlookup
+end
+
+# sound proms
+begin sound
+0x0000  0x0100  82s126.1m	sound_a
+0x0100  0x0100  82s126.3m	sound_timing
+end
+

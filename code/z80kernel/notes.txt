@@ -1,0 +1,29 @@
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+color 1b: 55. (255) is green text on blue background (other color is ltblue)
+color 1e: 55. (255) is green text on blue background( other color is whiteish)
+color 1a            is green text on white background (other color is ltblue)
+
+color 1f  "255" is brown on green
+	  "254" is brown on lt blue   other color is 
+
+1b: blk     dkgrn   green   brown       00 09 02 0f
+
+1c: ltblue  ltblue  blue    ltblue	04 04 03 04
+1d: blue    blue    ltblue  blue	03 03 04 03 
+1e: blue    blue    green   brown	03 03 02 0F
+1f: ltblue  blue    green   brown	04 03 02 0F
+
+1c: island gfx -> deep-shallow waters
+1d: island gfx -> shallow-deep waters
+1e: island in deep waters
+1f: island in shallow waters
+
+
+Bunny color:   01
+Monkey Color:  04
+gator color:   05
+llama color:   0F
+cursor color:  19 (3d anaglyph look!)
+Crystal color: 

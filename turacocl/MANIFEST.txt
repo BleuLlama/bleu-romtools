@@ -1,0 +1,42 @@
+This file explains what all of the files are, and which items are where.
+
+CHANGELOG.txt			what's new?
+LICENSE.txt			The license for the software
+MANIFEST.txt			This file
+Makefile			The makefile
+ini/				INI-based driver files
+txt/				Text documents
+
+src/				all of the source
+src/main.c			the main routine
+src/params.[ch]			parameter parsing and structures
+src/misc.h			various helpful #defines and macros
+src/errors.h			error values used for the project
+
+src/game/			game/driver related code
+src/game/checker.[ch]		Checkerboard image generation routines
+src/game/coding.[ch]		graphics <-> rom image conversions
+src/game/driver.[ch]		game driver parser and structure manipulators
+src/game/romio.[ch]		load and save rom files
+src/game/tilemap.[ch]		tilemap generation routines
+src/game/turaco.[ch]		core driver handlers
+
+src/ini/			ini parsing related code
+src/ini/ini.[ch]		ini parsing mechanism (pseudo-DOM)
+src/ini/jstr.[ch]		my extra string manipulations functions
+
+src/gfxlib/			image structure operations
+src/gfxlib/endian.[ch]		routines to load/save big/little endian data
+src/gfxlib/font.[ch]		font manipulations
+src/gfxlib/gfxlib.h		overall .h file
+src/gfxlib/image.[ch]		an RGB image structure and manipulations
+src/gfxlib/io_util.[ch]		utility io methods (reading/writing words, etc)
+src/gfxlib/ls.[ch]		image I/O abstraction layer/valve
+
+src/gfxlib/lsio/		IO routines for loading and saving image formats
+src/gfxlib/lsio/pngio.[ch]	loading and saving PNG images (requires imagemagick)
+src/gfxlib/lsio/ppmio.[ch]	loading and saving PPM images
+src/gfxlib/lsio/pcxio.[ch]	loading and saving PCX images
+src/gfxlib/lsio/pcx.txt		PCX image file format ( (c)1991 ZSoft )
+
+src/gui/			curses/ncurses based gui system

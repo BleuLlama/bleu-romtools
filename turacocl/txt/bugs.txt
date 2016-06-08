@@ -1,0 +1,75 @@
+Bug and issue list for Turaco CL
+
+Date		Number	Status	Description
+----		------	------	-----------
+
+2003/03/19	01	Open	ROM searcher doesn't check the proper dir,
+				it just goes with the first correct one it
+				finds.
+
+2003/03/19	02	Fixed	If the ROM is too big, it overflows the buffer
+				when it loads in.
+				Fixed 2003-03-21
+
+2003/03/19	03	Fixed	get/set bit routine can go outside of the
+				bounds of the rom image.
+				Fixed 2003-04-27
+
+2003/03/19	04	Open	X-Y offsets inconsistancy bug. ?
+				non square images?  rotations?
+
+2003/04/07	05	Fixed?	Defining odd widths (-wid 11) causes a crash
+				* this code will be revisited for tilemaps *
+				Fixed 2003-04-07
+
+2003/04/07	06	Fixed	When an old driver is used, and the DriverName
+				is not specified, but -ini was used, the
+				driver name is "undefined"
+				Fixed 2003-04-08
+
+2003/04/08	07	Open	MAME dumper 'FRAC' support is bad.
+
+2003/04/08	08	Fixed	Windows XP EMM problem
+				"file is wrong size" at 1600 bytes long
+				see 10 and 11
+				Fixed 2003-04-11
+
+2003/04/08	09	Fixed	Windows 2000 PCX save routine failing
+				writing header, and palette, but nothing else
+				(and not even a complete header at that.)
+				see 10 and 11
+				Fixed 2003-04-11
+
+2003/04/08	10	Fixed	Decoding of graphics fails on MS-DOS 
+				systems.  It decodes a bit fine, then it
+				is just garbage.
+				Fixed 2003-04-11
+
+2003/04/08	11	Fixed	Segfault on Linux and Solaris systems.
+				isspace() issue
+				Fixed 2003-04-11
+
+2003/04/12	12	Fixed	INI headers and keys should be case insensitive
+				Fixed 2003-04-12
+
+2003/04/16	13	Fixed	-rod seems to have no effect
+				Fixed 2003-04-17
+
+2003/05/29	14	Fixed	It should still build roms if none were found
+				to backfill with.
+				Fixed 2008-03-16
+
+2003/05/29	15	Fixed	It should be more tolerant to >n color images
+				with repeating colors. (ie, photoshop PCX files)
+				Fixed 2003-05-30
+
+2006/02/13	16	Fixed	If an -ini file is specified, but there is no
+				driver env-var set, it should still work
+				Fixed 2008-02
+
+2009/11/09	17	Open	PNG8 Export is not working, while PNG32 is.
+
+2009/11/09	18	Open	PNG8 Import is not tested, and probably faulty.
+
+2008/11/11	19	Open	Switch from ImageMagick to libGD
+				for png,gif,jpg export/import

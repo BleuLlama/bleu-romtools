@@ -1,0 +1,45 @@
+
+
+         
+
+
+
+
+
+                        C H A N G E S   I N   V 0 1 . 5 0
+
+
+
+
+
+
+           The  ASxxxx  assembler  and  linker have been updated to move
+        byte index, direct page  mode,  and  byte  pc  relative  address
+        checking  from the assembler to the linker.  This change has al-
+        lowed the following enhancements:  
+
+             1.  The  .setdp  directive  now has a common format for all
+                 AS68xx assemblers.  
+
+             2.  Direct  page  variables  may be externally defined with
+                 their addresses resolved at link time.  
+
+             3.  Byte  index  offsets  may  be  external  references and
+                 resolved at link time.  
+
+             4.  Byte  pc  relative  instructions  (i.e.   branches) may
+                 reference external labels or labels in other areas.  
+
+
+           The  ASxxxx  assemblers  (using  the  -f  or  -ff option) can
+        generate a listing file which flags the data that will be  relo-
+        cated by the linker.  
+
+           The  REL file format now has an additional directive for pag-
+        ing information and has additional flags for  page0,  page,  and
+        unsigned  byte  formats.   The new linker is compatible with the
+        first version of the ASxxxx assemblers.  
+
+           The  remaining changes are related to non-portable code found
+        while porting the assemblers to a motorola 68030 system.  
+

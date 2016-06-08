@@ -1,0 +1,61 @@
+ZCC/ASZ80 additional information
+Scott Lawrence
+yorgle@gmail.com
+
+
+Additional keyword...
+
+
+.bound ADDRESS
+
+	define a top boundary for a chunk of code.  If the assembler
+	puts a byte on the address defined, a warning will be generated.
+	This is helpful when making rom patches, when you have a very 
+	limited, specific romspace to fit your code into.
+
+	example:
+
+
+.org	0x4300
+foo:
+	ld a, ix
+	inc a
+	jp bar
+.bound	0x4380
+
+.org	0x4400
+bar:
+	inc a
+	add b
+	ld (hl), a
+	ret
+.bound	0x4420
+
+
+.repeat BYTE, COUNT
+
+	repeats "BYTE" for "COUNT" times.  If COUNT is 0, then no work
+	is done, otherwise, the byte will be repeated.
+
+	example:
+
+		.repeat 0x42, 7
+		; equivalent to
+		.byte 0x42, 0x42, 0x42, 0x42, 0x42, 0x42, 0x42
+
+
+.fill BYTE, ADDRESS
+
+	Will repeat BYTE until the current position is ADDRESS.
+	This is inclusive, so ADDRESS will contain BYTE as well.
+	NOTE: there is a small bug where negative indexing the
+	address near 0x0000 causes a hang.
+
+	example:
+
+		.org 0x1000
+		.fill   0x99, 0x11ff	; fills to 1ff with 0x99
+
+		.org 0x0000
+		.fill	0x00, .-1	; DO NOT DO THIS
+

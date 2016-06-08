@@ -1,0 +1,23 @@
+0.94	First released version
+
+0.95	Converted 0crt.asm to Z80 opcodes.  Changed some JPs to JRs.
+	Removed i8085 files from distribution, available separately.
+	Tried compiling with lcc, found a couple of bugs:
+		Made ctype[] unsigned char to get 8 bits.
+		Unary - of unsigned int seems harmless, but keep in mind.
+		lcc doesn't like liberties taken in scc code at all.
+	Got modified cpp from Michael Haardt which does ANSI stringification.
+	Made scc ignore plain # (same as #line) directives.
+	Changed hello.c to take advantage of stringification.
+	Updated README for new resources.
+
+0.96	Added ANSI C concatenation of adjacent strings.
+	Changed hello.c to take advantage of this.
+	Moved lib and include to first level.
+	Added pseudojumps to assembler. These assemble to JR whenever
+	possible, but JP in worst case. Use with caution.
+	Modified compiler to take advantage of this.
+	Fixed bug that allowed jr m,dest which is not a legal opcode.
+	Added a peephole optimiser: Chris Fraser's copt
+	Modified compiler to generate extra information needed by pho
+	Added -O flag to zcc to enable optimiser

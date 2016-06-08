@@ -1,0 +1,86 @@
+This is the driver distribution as of 20 Dec 98.  It should contain 
+816 drivers for various games.  If you have any problems, suggestions,
+better palettes, better graphics banks, or more drivers, send us e-mail!
+
+Be sure to get the latest executable and driver files at:
+
+    http://code.google.com/p/bleu-romtools
+
+    Scott Lawrence	yorgle@gmail.com
+    Ivan Mackintosh	ivan@rcp.co.uk
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+The following drivers have known problems:
+
+game		problem
+----		-------
+anteater	graphics
+frisky tom	bank 3
+kangaroo	graphics corrupt
+marble madness	32 color - palette corrupt - one bank will be bad
+minefield	corrupt
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Some games may have compressed or encoded graphics, and therefore are 
+not supported properly by TURACO.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+What's new in this distribution: (12 Dec 98)
+
+  Latest Mame beta hack produced 837 drivers: 
+    note: some of these overlap.
+
+     30 drivers with 0 bitplanes (0 colors) (!)
+     85 drivers with 1 bitplane  (2 colors)
+    314 drivers with 2 bitplanes (4 colors)
+    193 drivers with 3 bitplanes (8 colors)
+    404 drivers with 4 bitplanes (16 colors)
+      3 drivers with 5 bitplanes (32 colors) 
+      3 drivers with 8 bitplanes (256 colors)
+
+    0 bitplane games have no graphics (vector games) and were deleted
+    5 bitplane games have more colors than the palette supports
+    8 bitplane games have more colors than the palette supports
+
+    After intgeration with the old drivers, we get 850 drivers
+    (Almost 4 times as many as before!!)
+
+    Missing driver categories:
+        ASTRCADE, BERZERK, GAMEPLAN, M8080, MISSILE, MZ80, QIX, STRATOVOX
+        WILLIAMS
+        some of these are bitmap-based graphics, not sprite-based graphics
+        like the M8080 and williams games.  Others are vector games.
+        (look in TXT\DRIVERS.BAT for which games these are)
+
+What's new as of  9 Dec 98
+fixed:
+    rallyx.ini
+    spacefb.ini
+    starforc.ini
+    tazmania.ini
+    theend.ini
+better:
+    palette for arkanoid (Blizzard)
+
+ported from Age 0.6.3:
+
+1942.ini      docastle.ini  jrpacman.ini  pacmanbl.ini	reactor.ini
+3stooges.ini  frogger.ini   krull.ini     pacmanjp.ini	redufo.ini
+amidar.ini    galaga.ini    ladybug.ini   pacmod.ini	scramble.ini
+amidarjp.ini  galagabl.ini  mappy.ini	  pacplus.ini	strider.ini
+atlantis.ini  galaganm.ini  milliped.ini  pengo.ini	superg.ini
+boblbobl.ini  galap1.ini    motos.ini	  pengoa.ini	theend.ini
+bombjack.ini  galap4.ini    mplanets.ini  penta.ini	todruaga.ini
+brubber.ini   galapx.ini    mrdo.ini	  piranha.ini	tron.ini
+centiped.ini  galaxian.ini  mrdot.ini	  pisces.ini	turpin.ini
+crush.ini     gallag.ini    mrlo.ini	  pooyan.ini	turtles.ini
+digdug2.ini   galmidw.ini   mspacatk.ini  puckman.ini	vanguard.ini
+digdugat.ini  galnamco.ini  mspacman.ini  qbert.ini	warofbug.ini
+digdugnm.ini  galturbo.ini  namcopac.ini  qbertjp.ini
+dkong.ini     hangly.ini    nrallyx.ini   qbertqub.ini
+dkongjr.ini   journey.ini   pacman.ini	  rallyx.ini
+
+

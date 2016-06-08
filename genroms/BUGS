@@ -1,0 +1,8 @@
+
+BUGS:
+
+It's not very good at picking up on bad input.  Be careful.
+
+For some reason, on Linux, if you uncomment the free in romsread.c, it 
+will crash.  It's a small memory hole right now, but that's okay... Better
+than it crashing on ya. heh.

@@ -1,0 +1,118 @@
+zcc 0.96:
+
+Here is a free Z80 development package for Unix or DOS consisting of a
+C compiler, a peephole optimiser, an assembler and a relocating linker.
+
+What's in the directories:
+
+scc     Ron Cain's Small C compiler originaly from Dr. Dobbs Journal.
+	Has been through many hands and Chris Lewis had it last, many
+	years ago.  I fixed it a bit. In particular I made it ignore
+	#line and # directives, needed for the pp bit. I also added the
+	asm pseudofunction which passes a quoted string directly to the
+	assembler. Note that asm doesn't append any newlines; you must
+	do this yourself. This is so that assembly code can be pieced
+	together in macros. See test/hello.c for an example.  C string
+	escapes work here. Small C is a rather limited subset of K&R
+	C.  In particular, only char and int types; single dimension
+	arrays and pointers but not together.  No initialised data. The
+	source of the compiler is a good example of its limitations
+	since it was meant to self-compile. There are a handful of
+	library functions in lib.
+
+pho	Christopher Fraser's copt peephole optimiser, used here to make
+	generated assembler more compact. Rules I have supplied detect
+	some use of auto variables and use offset(ix) addressing modes
+	instead of offset(sp). Limitation of 128 bytes of auto variable
+	though. The rewrite rules are not thoroughly tested! Be prepared
+	to try compiling without -O if things go wrong. If you have any
+	corrections, let me know.
+
+pp      Public domain C preprocessor by Martin Minow, posted to Usenet
+	many years ago. (Usenet is the news system that was used before
+	this Internet Web stuff.) It's much more capable than the one
+	built into scc.  This version was modified mostly by Michael
+	Haardt to make the draft ANSI stuff almost ANSI.
+
+as      A PD assembler from the C Users Group collection, which I found
+	on a SimTel mirror as crossasm/cug292wk.zip. I cleaned it up
+	(only the Z80 version). I merged in some changes from the gcc
+	6811 cross-compiler developers to increase the number of
+	significant characters in identifiers and filenames (also in the
+	linker below). I added pseudojumps (assembles to jr form
+	whenever possible).  I also added one switch: -c for case
+	insensitivity (used to be a compile time option).  Note that the
+	syntax resembles PDP-11 assembler most and not the traditional
+	Z80 syntax. In particular, the pseudo-ops are different,
+	immediate ops require #, offset syntax is offset(register), not
+	(register+offset), and others.
+
+link    A relocating linker from the same package above. I also cleaned
+	this up, added the -c case insensitivity switch and added changes
+	from the gcc 6811 cross-compiler developers to get all arguments
+	from the command line. It doesn't handle libraries though.
+
+zcc     I wrote this driver to coordinate the various phases. You can
+	call it with .c, .asm, or .rel files. -v shows what it's doing.
+	-c stops after assembly. -I, -D and -U arguments go to cpp, -b
+	and -g to the linker. -O causes the peephole optimiser to be
+	invoked. It assumes the executables for the phases are on your
+	path and that 0crt.rel (C startup and runtime routines) and
+	pho's rules are in the current directory. Edit this if your
+	setup is different.
+
+test	The runtime library and a couple of test programs for a
+	development board I use.
+
+doc	Documentation, a bit for scc, but mostly for the assembler and
+	linker. There is documentation for the preprocessor in its own
+	directory.
+
+The Makefile in the top directory will make everything except the test.
+It should work with both Unix and Borland C by editing the definitions.
+Also edit submake.bat for Borland C. You need to install the binaries
+somewhere on your path before you run the tests, or modify zcc.c.  Edit
+Makefile or make.bat in test/ if you need to.
+
+Other resources:
+
+Michael Haardt has informed of other resources
+
+<quote>
+
+There are certainly a few options for cpp:
+
+o  GNU cpp.  This is only available under GPL, which may or may not
+   be suitable for everybody.  Typically for FSF, it tries to do
+   everything which makes it quite large.
+
+o  Dennis Ritchie's cpp.  Yes, his latest and greatest cpp is available,
+   as part of the lcc distribution which is available from ftp.princeton.edu.
+   I don't know the distribution policy or anything about its size.
+
+J. Hendrix' 2nd edition of the Small C book contains a much nicer version.
+I used to use the old and original version back then, which did not
+even contain for and switch, although it had float support.  This modern
+version is written for the 8086, but it is still _very_ easy to port it
+to a framepointer-less architecture.  Perhaps you can include a hint to
+that book.
+
+</quote>
+
+Request: If you find a use for this zcc package, please drop me a email
+note. I'm just curious how many people use it.
+
+Disclaimer 1: All this is provided as is with no warranty and no
+support.  I hope it works for you, but you may have to hack something
+for your local setup. You are welcome to email me, but I promise nothing.
+
+Disclaimer 2: This has nothing to do with my employment, despite the
+email address. It's just for my hobby.
+
+0.96 is the final release. The remaining minor numbers are reserved for
+bug fixes.  I won't be doing anything more with this compiler. There is
+only so much you can do given the basic limitations in the design.
+
+	Ken Yap
+	ken@syd.dit.csiro.au
+	January 1996

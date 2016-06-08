@@ -1,0 +1,65 @@
+.AUTODEPEND
+
+#		*Translator Definitions*
+CC = bcc +DZ80.CFG
+TASM = TASM
+TLINK = tlink
+
+
+#		*Implicit Rules*
+.c.obj:
+  $(CC) -c {$< }
+
+.cpp.obj:
+  $(CC) -c {$< }
+
+#		*List Macros*
+
+
+EXE_dependencies =  \
+  loadfl16.obj \
+  parsecmd.obj \
+  dissz80.obj \
+  dz80.obj
+
+#		*Explicit Rules*
+dz80.exe: dz80.cfg $(EXE_dependencies)
+  $(TLINK) /v/x/c/d/P-/LC:\BC\LIB @&&|
+c0s.obj+
+loadfl16.obj+
+parsecmd.obj+
+dissz80.obj+
+dz80.obj
+dz80
+		# no map file
+cs.lib
+|
+
+
+#		*Individual File Dependencies*
+loadfl16.obj: loadfl16.c 
+
+parsecmd.obj: parsecmd.c 
+
+dissz80.obj: dissz80.c 
+
+dz80.obj: dz80.c 
+
+#		*Compiler Configuration File*
+dz80.cfg: makefile.
+  copy &&|
+-f-
+-v
+-G
+-O
+-Z
+-d
+-h
+-H=DZ80.SYM
+-wucp
+-IC:\BC\INCLUDE
+-LC:\BC\LIB
+-P-.C
+| dz80.cfg
+
+

@@ -1,0 +1,5 @@
+
+Version 2.00	2016-June-08	Scott Lawrence	yorgle@gmail.com
+
+	Google Code SVN repository copied over.
+	(original source history has been removed)
