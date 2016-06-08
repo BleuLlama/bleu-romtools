@@ -10,6 +10,8 @@ CC = cc -g
 
 #		*List Macros*
 
+TARG := dz80
+
 EXE_dependencies =  \
   loadfl32.o \
   parsecmd.o \
@@ -17,6 +19,13 @@ EXE_dependencies =  \
   dz80.o
 
 CFLAGS := -DNEW_BUILD -Wall -pedantic
+
+all:	$(TARG) install
+
+install:
+	@-mkdir ../bin
+	cp $(TARG) ../bin
+.PHONY: install
 	 
 
 %.o: %.c
@@ -24,8 +33,9 @@ CFLAGS := -DNEW_BUILD -Wall -pedantic
 
 
 #		*Explicit Rules*
-dz80: $(EXE_dependencies)
-	$(CC) -o dz80 $(EXE_dependencies)
+$(TARG): $(EXE_dependencies)
+	$(CC) -o $(TARG) $(EXE_dependencies)
 
 clean:
-	-rm -f dz80 $(EXE_dependencies)
+	-rm -f $(TARG) $(EXE_dependencies) ../bin/$(TARG)
+
