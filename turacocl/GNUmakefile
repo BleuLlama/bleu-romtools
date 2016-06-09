@@ -47,12 +47,14 @@ else
 TARGET  := $(NAME)
 endif
 
+ifeq ($(CURSES),YES)
 ifeq ($(ARCH),NetBSD)
 DNCURSES := -DUSE_CURSES
 LIBS += -lcurses
 else
 DNCURSES := -DUSE_CURSES -DNCURSES
 LIBS += -lncurses
+endif
 endif
 
 
@@ -106,21 +108,25 @@ OBJS := $(SRCS:%.c=%.o)
 
 all:	$(TARGET)
 
+install: $(TARGET)
+	@-mkdir bin
+	@-cp $(TARGET) bin
 
 tidy:
 	@echo Removing core files
-	@rm -f $(TARGET).core core
+	@-rm -f $(TARGET).core core
 	@echo Removing generated object files
-	@rm -f $(OBJS)
+	@-rm -f $(OBJS)
 .PHONY: tidy
 
 clean:	tidy
 	@echo Removing built executable $(TARGET)
-	@rm -f $(TARGET)
+	@-rm -f $(TARGET)
 	@echo Removing ancillary files
-	@rm -f $(TARGET) *.png *.pnm *.pcx pacman.5*
-	@rm -f .gdb_history
-	@rm -f .DS_Store
+	@-rm -f $(TARGET) *.png *.pnm *.pcx pacman.5*
+	@-rm -f .gdb_history
+	@-rm -f .DS_Store
+	@-rm -rf bin
 .PHONY: clean
 
 backup: clean

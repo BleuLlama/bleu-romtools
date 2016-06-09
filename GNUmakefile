@@ -4,6 +4,7 @@
 SUBDIRS := \
         dz80s131 \
         genroms \
+	turacocl \
 	zcc 
 
 BINDIR := bin

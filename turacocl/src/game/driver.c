@@ -206,7 +206,7 @@ char * _find_file( char * path, char * filename )
 	    /* if it's a dir, try to recurse down it too. */
 	    if( S_ISDIR( sb.st_mode ) )
 	    {
-		if( dp->d_name && dp->d_name[0] != '.')
+		if( /*dp->d_name && */ dp->d_name[0] != '.')
 		{
 		    (void) strncat( dpath, DIRSLASH, MAXPATH );
 		    r = _find_file( dpath, filename );

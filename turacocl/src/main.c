@@ -104,12 +104,14 @@ int main( int argc, char ** argv )
 	return( ERR_NONE );
     }
 
+#ifdef USE_CURSES
     if( ti->up->gui )
     {
 	run_gui_app();
 	version();
 	return( ERR_NONE );
     }
+#endif
 
     if (!ti->up || ti->up->h || (r = params_Verify( ti->up )))
     {

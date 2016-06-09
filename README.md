@@ -15,6 +15,23 @@ years that have helped me create and edit ROMs for Arcade game
 hardware. Some of these tools will work with other systems as well.
 (Mainly Z80 based systems)
 
+## Build...
+
+To build this, you will need to have a gcc-based toolchain installed,
+gnu make, gcc, or llvm, etc... 
+
+in this main directory you should be able to just type "make" and it
+will build all of the tools, not including Turaco since it's an old DOS
+based application, although Turcao CL will build. 
+
+All of the tools will be copied into the bin/ directory, which you can
+either add to your path, or copy to a bin directory of your choice thats
+already in your path.
+
+Do note that turaco may require setting up some environment variables
+to operate properly.
+
+
 ## Genroms
 
 Genroms will take the output from your assembler/compiler as an

@@ -235,7 +235,7 @@ PPM_SupportedFile(
 {
     /* eventually check the first value to see if it's a magic cookie */
     /* but for now, always assume it's correct. */
-    filename = filename;
+    filename = NULL;
     return( ff_PPM ); 
 }
 
