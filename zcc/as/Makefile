@@ -1,5 +1,3 @@
-.c$(O):
-	$(CC) $(CFLAGS) $(DEBUG) -c $<
 
 AOBJSD=	asdata$(O) \
 	asexpr$(O) \
@@ -26,6 +24,9 @@ IOBJSD=	i85ext$(O) \
 IOBJS=	i8*$(O)
 
 all:	asz80$(E) as8085$(E)
+
+.c$(O):
+	$(CC) $(CFLAGS) $(DEBUG) -c $<
 
 asz80$(E):	$(AOBJSD) $(ZOBJSD)
 	$(CC) $(DEBUG) $(OUT) $(AOBJS) $(ZOBJS)

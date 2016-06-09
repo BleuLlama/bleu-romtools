@@ -3,6 +3,7 @@
 *.swp
 
 # exes
+bin
 dz80
 
 # Object files

@@ -57,14 +57,19 @@ $(TARG): $(OBJS)
 test: $(TARG)
 	./genroms sample.roms sample.ihx
 
+install: $(TARG)
+	-mkdir bin
+	cp $(TARG) bin/
+
 ################################################################################
 # utility targets
 
 clean:
-	rm -f core so_locations
-	rm -f $(TARG) *.so
-	rm -f $(OBJS)
-	rm -f ic7 ic8 ic14 ic15 ic20 ic21 ic31 ic32
+	-rm -f core so_locations
+	-rm -f $(TARG) *.so
+	-rm -f $(OBJS)
+	-rm -rf bin/
+	-rm -f ic7 ic8 ic14 ic15 ic20 ic21 ic31 ic32
 .PHONY: clean
 
 

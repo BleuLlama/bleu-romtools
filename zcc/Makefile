@@ -1,6 +1,15 @@
 # Unix
 CC=	gcc
-CFLAGS=	-O -I. $(DEBUG) -Wall
+CFLAGS=	-O -I. $(DEBUG) \
+	-Wno-incompatible-library-redeclaration \
+	-Wno-implicit-function-declaration \
+	-Wno-int-to-pointer-cast \
+	-Wno-int-conversion \
+	-Wno-implicit-int \
+	-Wno-return-type \
+	-Wno-parentheses \
+	-Wno-format-security
+
 DEBUG=
 O=	.o
 OUT=	-o $@

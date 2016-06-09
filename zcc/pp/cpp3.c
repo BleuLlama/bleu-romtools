@@ -306,6 +306,7 @@ initdefines()
 	int			i;
 	time_t			tvec;
 	struct tm		*tmp;
+	const char * months = "JanFebMarAprMayJunJulAugSepOctNovDec";
 
 	/*
 	 * Predefine the built-in symbols.  Allow the
@@ -342,7 +343,7 @@ initdefines()
             time(&tvec);
 	    tmp=localtime(&tvec);
 	    tp[0] = '"';
-	    strncpy(&tp[1],"JanFebMarAprMayJunJulAugSepOctNovDec"+tmp->tm_mon*3,3);
+	    strncpy(&tp[1],months+tmp->tm_mon*3,3);
 	    tp[4] = ' ';
 	    tp[5] = '0'+tmp->tm_mday/10;
 	    tp[6] = '0'+tmp->tm_mday%10;

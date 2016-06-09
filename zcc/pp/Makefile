@@ -1,3 +1,6 @@
+
+CFLAGS += -Wimplicit-function-declaration 
+
 .c$(O):
 	$(CC) $(CFLAGS) $(DEBUG) -c $<
 

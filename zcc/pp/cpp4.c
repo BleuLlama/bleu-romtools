@@ -27,6 +27,9 @@ static char	*parmp;			/* Free space in parm		*/
 static char	*parlist[LASTPARM];	/* -> start of each parameter	*/
 static int	nargs;			/* Parameters for this macro	*/
 
+void save( register int c );
+
+
 dodefine()
 /*
  * Called from control when a #define is scanned.  This module
@@ -70,7 +73,7 @@ dodefine()
 	register DEFBUF		*dp;		/* -> new definition	*/
 	int			isredefine;	/* TRUE if redefined	*/
 	char			*old;		/* Remember redefined	*/
-	extern int		save();		/* Save char in work[]	*/
+	/* extern int		save();		Save char in work[]	*/
 
 	if (type[(c = skipws())] != LET)
 	    goto bad_define;
@@ -289,7 +292,7 @@ int		delim;
 {
 	register char		*wp;
 	register int		i;
-	extern int		save();
+	/*extern int		save();*/
 
 	wp = workp;			/* Here's where it starts	*/
 	if (!scanstring(delim, save))

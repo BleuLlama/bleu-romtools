@@ -8,7 +8,8 @@
 #include "data.h"
 
 main (argc, argv)
-int	argc, *argv;
+int	argc;
+char 	**argv;
 {
 	char	*p,*bp;
 	int smacptr;

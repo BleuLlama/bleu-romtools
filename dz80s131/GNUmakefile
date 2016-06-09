@@ -22,9 +22,9 @@ CFLAGS := -DNEW_BUILD -Wall -pedantic
 
 all:	$(TARG) install
 
-install:
-	@-mkdir ../bin
-	cp $(TARG) ../bin
+install: $(TARG)
+	@-mkdir bin
+	cp $(TARG) bin/
 .PHONY: install
 	 
 
@@ -37,5 +37,5 @@ $(TARG): $(EXE_dependencies)
 	$(CC) -o $(TARG) $(EXE_dependencies)
 
 clean:
-	-rm -f $(TARG) $(EXE_dependencies) ../bin/$(TARG)
+	-rm -rf $(TARG) $(EXE_dependencies) bin
 
