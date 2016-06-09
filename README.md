@@ -3,7 +3,7 @@
 A collection of tools I've created or compiled to help you edit,
 hack, and work with arcade ROM files.
 
-This is currently release 2.00 of the bleu-romtools package.  This
+This is currently release 2.01 of the bleu-romtools package.  This
 version is updated from the google-code repository.  It is in the 
 process of being updated to build cleanly for modern systems.
 
