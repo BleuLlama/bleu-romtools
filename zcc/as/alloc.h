@@ -1,10 +1,10 @@
 /* alloc.h */
 /* DECUS C */
 
-extern	char	*alloc();
+extern	void	*alloc();
 #ifndef __APPLE__
-extern	char	*malloc();
-extern	char	*calloc();
+extern	void	*malloc();
+extern	void	*calloc();
 #endif
-extern	char	*realloc();
+extern	void	*realloc();
 

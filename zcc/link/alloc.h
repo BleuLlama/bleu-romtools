@@ -1,8 +1,8 @@
 /* alloc.h */
 /* DECUS C */
 
-extern	char	*alloc();
-extern	char	*malloc();
-extern	char	*calloc();
-extern	char	*realloc();
+extern	void	*alloc();
+extern	void	*malloc();
+extern	void	*calloc();
+extern	void	*realloc();
 
