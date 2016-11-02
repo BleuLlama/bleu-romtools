@@ -194,7 +194,7 @@ dowhile ()
 {
 	int	ws[7];
 
-	ws[WSSYM] = locptr;
+	ws[WSSYM] = (int)locptr;
 	ws[WSSP] = stkp;
 	ws[WSTYP] = WSWHILE;
 	ws[WSTEST] = getlabel ();
@@ -205,7 +205,7 @@ dowhile ()
 	statement (NO);
 	jump (ws[WSTEST]);
 	gnlabel (ws[WSEXIT]);
-	locptr = ws[WSSYM];
+	locptr = (char*)ws[WSSYM];
 	stkp = modstk (ws[WSSP]);
 	delwhile ();
 }
@@ -217,7 +217,7 @@ dodo ()
 {
 	int	ws[7];
 
-	ws[WSSYM] = locptr;
+	ws[WSSYM] = (int)locptr;
 	ws[WSSP] = stkp;
 	ws[WSTYP] = WSDO;
 	ws[WSBODY] = getlabel ();
@@ -233,7 +233,7 @@ dodo ()
 	gnlabel (ws[WSTEST]);
 	test (ws[WSBODY], TRUE);
 	gnlabel (ws[WSEXIT]);
-	locptr = ws[WSSYM];
+	locptr = (char*)ws[WSSYM];
 	stkp = modstk (ws[WSSP]);
 	delwhile ();
 }
@@ -246,7 +246,7 @@ dofor ()
 	int	ws[7],
 		*pws;
 
-	ws[WSSYM] = locptr;
+	ws[WSSYM] = (int)locptr;
 	ws[WSSP] = stkp;
 	ws[WSTYP] = WSFOR;
 	ws[WSTEST] = getlabel ();
@@ -254,7 +254,7 @@ dofor ()
 	ws[WSBODY] = getlabel ();
 	ws[WSEXIT] = getlabel ();
 	addwhile (ws);
-	pws = readwhile ();
+	pws = (int*)readwhile ();
 	needbrack ("(");
 	if (!match (";")) {
 		expression (YES);
@@ -279,7 +279,7 @@ dofor ()
 	statement (NO);
 	jump (pws[WSINCR]);
 	gnlabel (pws[WSEXIT]);
-	locptr = pws[WSSYM];
+	locptr = (char*)pws[WSSYM];
 	stkp = modstk (pws[WSSP]);
 	delwhile ();
 }
@@ -292,7 +292,7 @@ doswitch ()
 	int	ws[7];
 	int	*ptr;
 
-	ws[WSSYM] = locptr;
+	ws[WSSYM] = (int)locptr;
 	ws[WSSP] = stkp;
 	ws[WSTYP] = WSSWITCH;
 	ws[WSCASEP] = swstp;
@@ -309,11 +309,11 @@ doswitch ()
 	stkp = stkp + intsize();  /* '?case' will adjust the stack */
 	gjcase ();
 	statement (NO);
-	ptr = readswitch ();
+	ptr = (int*)readswitch ();
 	jump (ptr[WSEXIT]);
 	dumpsw (ptr);
 	gnlabel (ptr[WSEXIT]);
-	locptr = ptr[WSSYM];
+	locptr = (char*)ptr[WSSYM];
 	stkp = modstk (ptr[WSSP]);
 	swstp = ptr[WSCASEP];
 	delwhile ();
@@ -346,7 +346,7 @@ dodefault ()
 	int	*ptr,
 		lab;
 
-	if (ptr = readswitch ()) {
+	if (ptr = (int*)readswitch ()) {
 		ptr[WSDEF] = lab = getlabel ();
 		gnlabel (lab);
 		if (!match (":"))
@@ -372,7 +372,7 @@ dobreak ()
 {
 	int	*ptr;
 
-	if ((ptr = readwhile ()) == 0)
+	if ((ptr = (int*)readwhile ()) == 0)
 		return;
 	modstk (ptr[WSSP]);
 	jump (ptr[WSEXIT]);
@@ -385,7 +385,7 @@ docont ()
 {
 	int	*ptr;
 
-	if ((ptr = findwhile ()) == 0)
+	if ((ptr = (int*)findwhile ()) == 0)
 		return;
 	modstk (ptr[WSSP]);
 	if (ptr[WSTYP] == WSFOR)

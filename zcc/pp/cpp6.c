@@ -19,6 +19,8 @@
 
 #include	<stdio.h>
 #include	<ctype.h>
+#include	<stdlib.h>
+#include	<string.h>
 #include	"cppdef.h"
 #include	"cpp.h"
 
@@ -476,7 +478,7 @@ int		size;
  */
 {
 	register char	*result;
-	extern char	*malloc();
+	/*extern char	*malloc(); 2016-10*/
 
 	if ((result = malloc((unsigned) size)) == NULL)
 	    cfatal("Out of memory", NULLST);

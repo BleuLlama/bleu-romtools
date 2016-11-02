@@ -4,6 +4,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include "defs.h"
 #include "data.h"
 
@@ -15,7 +16,7 @@ doinclude ()
 	FILE	*inp2;
 
 	blanks ();
-	if (inp2 = fixiname ())
+	if (inp2 = (FILE*)fixiname ())
 		if (inclsp < INCLSIZ) {
 			inclstk[inclsp++] = input2;
 			input2 = inp2;
@@ -42,22 +43,22 @@ fixiname ()
 	ibp = &buf[0];
 
 	if ((c1 = gch ()) != '"' && c1 != '<')
-		return (NULL);
+		return (int)(NULL);
 	for (p = line + lptr; *p ;)
 		*ibp++ = *p++;
 	c2 = *(--p);
 	if (c1 == '"' ? (c2 != '"') : (c2 != '>')) {
 		error ("incorrect delimiter");
-		return (NULL);
+		return (int)(NULL);
 	}
 	*(--ibp) = 0;
 	fp = NULL;
 	if (c1 == '<' || !(fp = fopen(buf, "r"))) {
-		strcpy(buf2, DEFLIB);
+		strcpy(buf2, (const char *)DEFLIB);
 		strcat(buf2, buf);
 		fp = fopen(buf2, "r");
 	}
-	return(fp);
+	return (int)(fp);
 }
 
 /*

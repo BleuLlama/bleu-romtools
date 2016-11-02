@@ -53,7 +53,7 @@ nl ()
 
 inclib()
 {
-	return("");
+	return((int)"");
 }
 
 initmac()

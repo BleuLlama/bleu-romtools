@@ -501,7 +501,7 @@ int	lval[];
 		k = heir10 (lval);
 		if (k)
 			rvalue (lval);
-		if (ptr = lval[0])
+		if (ptr = (char*)lval[0])
 			lval[1] = ptr[TYPE];
 		else
 			lval[1] = CINT;
@@ -514,14 +514,14 @@ int	lval[];
 			error ("illegal address");
 			return (0);
 		}
-		if (ptr = lval[0])
+		if (ptr = (char*)lval[0])
 			lval[2] = ptr[TYPE];
 		if (lval[1])
 			return (0);
 		/* global and non-array */
 		immed ();
 		prefix ();
-		outstr (ptr = lval[0]);
+		outstr (ptr = (char*) lval[0]);
 		nl ();
 		lval[1] = ptr[TYPE];
 		return (0);
@@ -563,7 +563,7 @@ int	*lval;
 	char	*ptr;
 
 	k = primary (lval);
-	ptr = lval[0];
+	ptr = (char*)lval[0];
 	blanks ();
 	if ((ch () == '[') | (ch () == '('))
 		FOREVER {

@@ -26,8 +26,8 @@ int	*lval;
 		if (amatch("int", 3)) onum(intsize());
 		else if (amatch("char", 4)) onum(1);
 		else if (symname(sname)) {
-			if ((ptr = findloc(sname)) ||
-				(ptr = findglb(sname))) {
+			if ((ptr = (char*)findloc(sname)) ||
+				(ptr = (char*)findglb(sname))) {
 				if (ptr[STORAGE] == LSTATIC)
 					error("sizeof local static");
 				k = glint(ptr);
@@ -47,10 +47,10 @@ int	*lval;
 		return(lval[0] = lval[1] = 0);
 	}
 	if (symname (sname)) {
-		if (ptr = findloc (sname)) {
+		if (ptr = (char*)findloc (sname)) {
 			getloc (ptr);
-			lval[0] = ptr;
-			lval[1] =  ptr[TYPE];
+			lval[0] = (int)ptr;
+			lval[1] = (int)ptr[TYPE];
 			if (ptr[IDENT] == POINTER) {
 				lval[1] = CINT;
 				lval[2] = ptr[TYPE];
@@ -63,9 +63,9 @@ int	*lval;
 			else
 				return (1);
 		}
-		if (ptr = findglb (sname))
+		if (ptr = (char*)findglb (sname))
 			if (ptr[IDENT] != FUNCTION) {
-				lval[0] = ptr;
+				lval[0] = (int)ptr;
 				lval[1] = 0;
 				if (ptr[IDENT] != ARRAY) {
 					if (ptr[IDENT] == POINTER)
@@ -83,8 +83,8 @@ int	*lval;
 		blanks ();
 		if (ch() != '(')
 			error("undeclared variable");
-		ptr = addglb (sname, FUNCTION, CINT, 0, PUBLIC);
-		lval[0] = ptr;
+		ptr = (char *)addglb (sname, FUNCTION, CINT, 0, PUBLIC);
+		lval[0] = (int)ptr;
 		lval[1] = 0;
 		return (0);
 	}

@@ -10,6 +10,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>	/* for exit() */
 #include <string.h>
 #include <alloc.h>
 #include "aslink.h"
