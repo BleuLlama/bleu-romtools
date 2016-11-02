@@ -179,7 +179,11 @@ char * _find_file( char * path, char * filename )
 	{
 	    /* dpath = path/direntry */
 	    (void) strncpy( dpath, path, MAXPATH );
-	    (void) strncat( dpath, dp->d_name, MAXPATH );
+/*
+       char *strncat(char *dest, const char *src, size_t n);
+*/
+
+	    (void) strncat( dpath, dp->d_name, MAXPATH-1 );
 
 	    (void)stat( dpath, &sb );
 
@@ -204,7 +208,7 @@ char * _find_file( char * path, char * filename )
 	{
 	    /* dpath = path/direntry */
 	    (void) strncpy( dpath, path, MAXPATH );
-	    (void) strncat( dpath, dp->d_name, MAXPATH );
+	    (void) strncat( dpath, dp->d_name, MAXPATH-1 );
 
 	    (void)stat( dpath, &sb );
 

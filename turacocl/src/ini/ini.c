@@ -207,6 +207,7 @@ INIStruct *
 ini_ParseFile( char * filename )
 {
     int x;
+    char * junk = NULL;
     char buf[BUFSIZE];
     char * header = NULL;
     char * key    = NULL;
@@ -226,7 +227,9 @@ ini_ParseFile( char * filename )
 	/* clear the buffer*/
 	memset( buf, '\0', BUFSIZE );
 	/* read in a line*/
-	(void) fgets( buf, BUFSIZE, ifp );
+
+	junk = fgets( (char*)buf, (int)BUFSIZE, ifp );
+	if( junk ) { }	/* ignore x */
 
 	/* check for a # sign in it, set it to a NULL*/
 	(void) jstr_NullFirstC( buf, BUFSIZE, '#' );
