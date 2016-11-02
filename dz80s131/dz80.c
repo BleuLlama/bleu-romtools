@@ -221,12 +221,16 @@ void ShowUsage(void)
 	       "  /M=nn     Specifies whereabouts in Z80 memory the source file starts.\n"
 	       "  /S=nn     Specifies the address to start disassembling from.\n"
 	       "  /E=nn     Specifies the ending disassembly address.\n"
+	);
+	printf(
            "  /R=file   Specify the name for the reference file. Used with /XA /XN /XO /XI.\n"
            "  /XI       Create reference of input ports.\n"
            "  /XO       Create reference of output ports.\n"
            "  /XA       Create reference of addresses.\n"
            "  /XN       Create reference of indirect addresses.\n"
            "  /XR       Limits references to those outside the disassembly range.\n"
+	);
+	printf(
 	       "  /L	    Create a labelled (assembleable) output file.\n"
 		   "  /P=opmap  Use an opcode map to determine the addresses to disassemble.\n"
 	       "\n"

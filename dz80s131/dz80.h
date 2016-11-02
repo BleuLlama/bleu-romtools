@@ -4,7 +4,7 @@
 #define	__MIDZ80__
 
 
-#define	LOADBUFSIZE	4096	// Load the source binary in 4K chunks
+#define	LOADBUFSIZE	4096	/* Load the source binary in 4K chunks */
 
 /* Error return codes */
 

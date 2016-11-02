@@ -240,7 +240,7 @@ int		i, NumPasses;
 			return FALSE;
 			}
 		 for (i=0; i < 8; i++)
-   			FlagFn(i <<	3);			// Flag the RST's addresses
+   			FlagFn(i <<	3);			/* Flag the RST's addresses */
 		}
 
 /* Are we creating any references ? */
@@ -451,11 +451,11 @@ void DisassembleInstruction(void)
 		return;
 		}
 
-	GetNextOpCode();	// Get initial opcode in op
+	GetNextOpCode();	/* Get initial opcode in op */
 	switch (op)
 		{
 
-		case 0xcb:		// Disassemble the Rotates, SETs and RES's
+		case 0xcb:		/* Disassemble the Rotates, SETs and RES's */
 			Z80Flags |=	Z80CB;
 			DisCB();
 			return;
@@ -488,7 +488,7 @@ void DisassembleInstruction(void)
 
 	if (op >= 0x40 && op <=	0x7f)
 		{
-		Dis40to7F();			// All the LD's
+		Dis40to7F();			/* All the LD's */
 		return;
 		}
 
@@ -625,7 +625,7 @@ char	Num[4],	BitResSet;
 	
 	AddToDis(Num + (BitResSet <	2) );
 
-	// Finally, add the register component.
+	/* Finally, add the register component. */
 	AddToDisReg8(REG_HL, FALSE);
 
 	if (BitResSet == 1)
@@ -679,7 +679,7 @@ int DisED00to3F(void)
 
     switch (bb)
     	{
-        case 0:		// ED 0x00 - 0x38
+        case 0:		/* ED 0x00 - 0x38 */
         	AddToDisTab("in0");
             AddToDis(Reg8Idx[r]);
             AddToDis(",(");
@@ -688,7 +688,7 @@ int DisED00to3F(void)
             AddToDisCommentZ180();
             return TRUE;
 
-        case 1:		// ED 0x01 - 0x39
+        case 1:		/* ED 0x01 - 0x39 */
         	AddToDisTab("out0");
             AddToDis("(");
             AddToDis8BitAbs(FALSE);
@@ -697,7 +697,7 @@ int DisED00to3F(void)
             AddToDisCommentZ180();
             return TRUE;
 
-        case 4:		// ED 0x04 - 0x3c
+        case 4:		/* ED 0x04 - 0x3c */
         	AddToDisTab("tst");
             AddToDis(Reg8Idx[r]);
             AddToDisCommentZ180();
@@ -720,7 +720,7 @@ BYTE	EDop;
 
 	switch (op)
 		{
-        case 0x76:		// This is SLP which clashes with the undocumented Z80's IM 1
+        case 0x76:		/* This is SLP which clashes with the undocumented Z80's IM 1 */
         	if (!(DisFlags & DISFLAG_EXCLUDEZ180))
             	{
                 AddToDisTab("slp");
@@ -730,7 +730,7 @@ BYTE	EDop;
             break;
 
 
-        case 0x4c:		// The Z180's MLT instructions
+        case 0x4c:		/* The Z180's MLT instructions */
         case 0x5c:
         case 0x6c:
         case 0x7c:
@@ -741,7 +741,7 @@ BYTE	EDop;
             AddToDisCommentZ180();
             return TRUE;
 
-        case 0x64:		// Z180's TST nn
+        case 0x64:		/* Z180's TST nn */
         	if (DisFlags & DISFLAG_EXCLUDEZ180)
             	return FALSE;
             AddToDisTab("tst");
@@ -868,10 +868,10 @@ int	DisED80toBF(void)
     	{
 		switch (op)
     		{
-        	case 0x83:		// otim
-        	case 0x8b:		// otdm
-        	case 0x93:		// otimr
-        	case 0x9b:		// otdmr
+        	case 0x83:		/* otim */
+        	case 0x8b:		/* otdm */
+        	case 0x93:		/* otimr */
+        	case 0x9b:		/* otdmr */
             	AddToDisTab(Z180RepeatOps[(op >> 3) & 3]);
             	AddToDisCommentZ180();
             	return TRUE;
@@ -899,21 +899,21 @@ void Dis00to3F(void)
 		case 8:
 			switch ((op	>> 3) &	7)
 				{
-				case 0:		//0x00
+				case 0:		/* 0x00 */
 					AddToDisTab("nop");
 					return;
 
-				case 1:		//0x08
+				case 1:		/* 0x08 */
 					AddToDisTab("ex");
 					AddToDis("af,af'");
 					return;
 
-				case 2:		//0x10
+				case 2:		/* 0x10 */
 					AddToDisTab("djnz");
 					FlagFn(AddToDisRel8(FALSE));
 					return;
 
-				case 3:		//0x18
+				case 3:		/* 0x18 */
 					AddToDisTab("jr");
 					FlagFn(AddToDisRel8(FALSE));
 					return;
@@ -941,8 +941,8 @@ void Dis00to3F(void)
 					AddToDis("),a");
 					return;
 
-				case 2:	   	// 0x22 = ld (nn),hl
-				case 3:		// 0x32 = ld (nn),a
+				case 2:	   	/* 0x22 = ld (nn),hl */
+				case 3:		/* 0x32 = ld (nn),a  */
 					AddToDisTabLD("(");
 					AddToDis16BitAbs(FALSE);
 					AddToDis("),");
@@ -1106,25 +1106,25 @@ int	GenOp;
 		case 3:
 			switch ((op	>> 4) &	3)
 				{
-				case 0:		// 0xc3
+				case 0:		/* 0xc3 */
 					AddToDisTab("jp");
 					FlagFn(AddToDis16BitAbs(FALSE));
 					return;
 
-				case 1:		// 0xd3
+				case 1:		/* 0xd3 */
 					AddToDisTab("out");
 					sprintf(Buffer,"(#%02x),a",	GetNextOpCode()	);
 					AddToDis(Buffer);
 					AddRefEntry(op, LastPC, DISREF_OUTPORT);
 					return;
 
-				case 2:		// 0xe3
+				case 2:		/* 0xe3 */
 					AddToDisTab("ex");
 					AddToDis("(sp),");
 					AddToDisHLIXIY();
 					return;
 
-				case 3:		// 0xf3
+				case 3:		/* 0xf3 */
 					AddToDisTab("di");
 					return;
 				}
@@ -1147,23 +1147,23 @@ int	GenOp;
 		case 9:
 			switch ((op	>> 4) &	3)
 				{
-				case 0:		// 0xc9
+				case 0:		/* 0xc9 */
 					AddToDisTab("ret");
                     LineCmd |= LC_BLANKLINE;
 					return;
 
-				case 1:		// 0xd9
+				case 1:		/* 0xd9 */
 					AddToDisTab("exx");
 					return;
 
-				case 2:		// 0xe9
+				case 2:		/* 0xe9 */
 					AddToDisTab("jp");
 					AddToDis("(")
 					AddToDisHLIXIY();
 					AddToDis(")");
 					return;
 
-				case 3:		// 0xf9
+				case 3:		/* 0xf9 */
 					AddToDisTabLD("sp,");
 					AddToDisHLIXIY();
 					return;
@@ -1173,19 +1173,19 @@ int	GenOp;
 		case 0x0b:
 			switch ((op	>> 4) &	3)
 				{
-				case 1:		// 0xdb
+				case 1:		/* 0xdb */
 					AddToDisTab("in");
 					sprintf(Buffer,"a,(#%02x)",	GetNextOpCode()	);
 					AddToDis(Buffer);
 					AddRefEntry(op, LastPC, DISREF_INPORT);
 					return;
 
-				case 2:		//0xeb
+				case 2:		/* 0xeb */
 					AddToDisTab("ex");
 					AddToDis("de,hl");
 					return;
 
-				case 3:		//0xfb
+				case 3:		/* 0xfb */
 					AddToDisTab("ei");
 					return;
 				}
@@ -1402,7 +1402,7 @@ int	i, NumOpCodes;
 
 char	GetIXIYDisplacement(void)
 {
-	if (Z80Flags & Z80GOTIXIYDISP)	// Already got IXIY dispacement?
+	if (Z80Flags & Z80GOTIXIYDISP)	/* Already got IXIY dispacement? */
 		return IXIYDisp;
 
 	IXIYDisp = (char)GetNextOpCode();

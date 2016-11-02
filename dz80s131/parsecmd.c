@@ -1,6 +1,7 @@
-// dZ80 Parse Command Line
-//
-// Written by Mark Incley
+/* dZ80 Parse Command Line
+ *
+ * Written by Mark Incley
+ */
 
 #include <stdio.h>
 #ifdef NEW_BUILD
