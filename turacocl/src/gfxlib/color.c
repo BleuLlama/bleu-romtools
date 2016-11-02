@@ -115,13 +115,15 @@ int
 Color_Find_Integrated ( IMAGE * img, int ncolors, int refpixel, int * xp )
 {
     int p;
-    int r,g,b;
+    /*int r,g,b; */
 
     if( !img )  return( 0 );
 
+	/*
     r = img->data[refpixel].r;
     g = img->data[refpixel].g;
     b = img->data[refpixel].b;
+	*/
 
     for( p=0 ; p<ncolors ; p++ )
     {

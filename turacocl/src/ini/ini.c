@@ -24,7 +24,11 @@
 #include <strings.h> /* strlen, strdup */
 #endif
 #include "jstr.h"   /* for my string manipulation functions */
-
+#ifdef __linux__
+#include <strings.h> /* strlen, strdup */
+#include <string.h> /* strlen, strdup */
+char *strdup(const char *s);
+#endif
 #include "misc.h"
 #include "ini.h"
 

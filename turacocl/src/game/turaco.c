@@ -744,7 +744,6 @@ turaco_DecodeRom(
 int
 turaco_DecodeImageFromRomBuffer( TuracoInstance * ti )
 {
-    int r;
     int wide, tall;
     if( ti->loadedGraphics)  Image_Destroy( ti->loadedGraphics );
 
@@ -778,7 +777,8 @@ turaco_DecodeImageFromRomBuffer( TuracoInstance * ti )
     turaco_PalettedToRGB( ti ); 
 
     /* finally, generate the color key associated with the above */
-    r = turaco_GenerateColorKeyFromDriver( ti );
+    (void)turaco_GenerateColorKeyFromDriver( ti );
+    
 
     return( ERR_NONE );
 }

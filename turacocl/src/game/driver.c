@@ -137,6 +137,11 @@
 #else
 #include <string.h>   /* strncpy, strncat */
 #endif
+#ifdef __linux__
+#include <strings.h>   /* strncpy, strncat */
+#include <string.h>   /* strncpy, strncat */
+extern char *strdup(const char *s);
+#endif
 #include "ini.h"
 #include "gfxlib.h"
 #include "misc.h"
@@ -350,10 +355,10 @@ game_LoadDriver(
 	/* setup inital stuff */
 	if( userParams->drv )
 	{
-	    gdp->driverName = strdup( userParams->drv );
+	    gdp->driverName = (char *)strdup( userParams->drv );
 	} else if( ini_Query( isp, "General", "Name" ) )
 	{
-	    gdp->driverName = strdup( ini_Query( isp, "General", "Name" )); 
+	    gdp->driverName = (char *)strdup( ini_Query( isp, "General", "Name" )); 
 	} else {
 
 	    /* there was no known game name, so we will yank
