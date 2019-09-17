@@ -1,4 +1,14 @@
 
+Version 2.03	2019-09-17
+	created bin2list
+
+Version 2.02	2016-Nov-01
+	cleanups for a clean build on linux
+
+Version 2.01	2016-June-09
+	Turaco CL added to the boot process
+	Fixed some other build issues
+
 Version 2.00	2016-June-08	Scott Lawrence	yorgle@gmail.com
 
 	Google Code SVN repository copied over.

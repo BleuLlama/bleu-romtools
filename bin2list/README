@@ -1,0 +1,51 @@
+----------------------------------------
+                                bin2list
+                   Binary file converter
+                             Version 1.0
+
+                          Scott Lawrence
+                          2019 September
+                        yorgle@gmail.com
+
+              http://www.umlautllama.com
+
+
+----------------------------------------
+                                OVERVIEW
+
+This is a simple tool to convert binary files into a few 
+various output formats to aid in generating code
+for other projects.
+
+
+----------------------------------------
+                                   USAGE
+
+Just pass in the binary input file and specify the output 
+file format.
+
+    bin2list file.bin -basic900
+
+will output something like:
+
+    900 DATA 30,29,119,120,10,0,0,0
+    901 DATA 23,0,2,134,250
+
+Also, just to show more examples in the code, there's 
+also a hexdump output:
+
+    bin2list file.bin -hex
+
+will output something like:
+    00000000  78 65 63 75 74 65 5f 68  65 61 64 65 72 00 5f 63  |xecute_header._c|
+    00000010  68 61 72 73 46 6f 72 4e  75 6d 00 5f 64 6f 4f 75  |harsForNum._doOu|
+    00000020  74 70 75 74 5f 42 61 73  69 63 00 5f 64 6f 4f 75  |tput_Basic._doOu|
+
+
+
+
+----------------------------------------
+                                 VERSION
+
+The latest version of this should be available off of github
+in my bleu-romtools project.

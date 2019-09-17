@@ -39,6 +39,17 @@ Intel Hex File (IHX/HEX), and pad it out into a defined ROM space.
 It will also pre-load the ROM space with ROM image files, so that
 you can make quick, reproducible patches for ROMs
 
+
+## Bin2List
+
+Bin2List will take a binary file and convert it to a few different
+file format styles, including BASIC DATA, C array (future) and so on.
+It can easily be extended to include other formats (C array, ASM
+.byte lists, etc)
+
+It loads in raw binary files, so it can work outside of the realm
+of specifics to hardware of any kind.
+
 ## TuracoCL
 
 TuracoCL is a portable command line reimplementation of the

@@ -4,6 +4,7 @@
 SUBDIRS := \
         dz80s131 \
         genroms \
+		bin2list \
 	turacocl \
 	zcc 
 

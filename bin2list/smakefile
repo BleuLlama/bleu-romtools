@@ -1,0 +1,68 @@
+# SAS-C Makefile for genroms
+#
+#  2010
+#  yorgle@gmail.com
+#  Scott Lawrence
+#
+
+
+################################################################################
+# now executable names for compiling...
+
+NAME	= bin2list
+VERSION = 1.0
+CPU = 68000
+
+# 1.9  additional output
+# 1.8  fixed an addressing bug
+# 1.7a text for stats changed
+
+SRCS = main.c
+OBJS = main.o
+
+
+
+##############################
+
+CC	= sc 
+
+TARG	= $(NAME)
+
+SCFLAGS	= 	optimize opttime optsched \
+		CPU=$(CPU) \
+		MATH=IEEE \
+		noicons \
+		DEF J_APPNAME="$(NAME)" \
+	  	DEF J_VERSION="$(VERSION)"
+
+ACFLAGS = DEF AMIGA
+
+##############################
+
+all: exe
+.PHONY: all
+
+exe: $(TARG)
+
+# we strip the execuable because we don't want it to get too proud
+# and wear ornate cloting.  Think of the scenes in "The Dark Crystal"
+.c.o:
+	$(CC) $(SCFLAGS) objname=$@ $<
+
+$(TARG): $(OBJS)
+	$(CC) $(SCFLAGS) $(OBJS) programname=$@ LINK
+.SECONDARY: $(OBJS)
+
+
+test: $(TARG)
+	bin2list bin2list -basic900
+
+################################################################################
+# utility targets
+
+clean:
+	-delete core so_locations ALL QUIET FORCE
+	-delete $(TARG) $(TARG).lnk $(TARG).info \#?.so ALL QUIET FORCE
+	-delete $(OBJS) ALL QUIET FORCE
+	-delete ic7 ic8 ic14 ic15 ic20 ic21 ic31 ic32 ALL QUIET FORCE
+.PHONY: clean
