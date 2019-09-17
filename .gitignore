@@ -1,4 +1,17 @@
 # misc
+.DS_Store
+bin2list
+genroms
+turacocl
+asz80
+aslink
+copt
+dcpp
+sccz80
+zcc
+a.ihx
+code/z80kernel/version.asm
+
 *.rel
 *.swp
 
@@ -38,3 +51,4 @@ dz80
 
 # Debug files
 *.dSYM/
+
